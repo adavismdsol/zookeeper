@@ -3,7 +3,13 @@
 wget http://mirrors.ukfast.co.uk/sites/ftp.apache.org/zookeeper/stable/zookeeper-3.4.6.tar.gz
 tar zxvf zookeeper-3.4.6.tar.gz 
 
-sed -i "s/AWS_KEY/$AWS_KEY/g" conf/s3credentials
-sed -i "s/AWS_SECRET/$AWS_SECRET/g" conf/s3credentials
+
+echo "com.netflix.exhibitor.s3.access-key-id=$AWS_KEY" >conf/s3credentials
+echo "com.netflix.exhibitor.s3.access-secret-key=$AWS_SECRET" >>conf/s3credentials
+
+
+
+#sed -i "s/AWS_KEY/$AWS_KEY/g" conf/s3credentials
+#sed -i "s/AWS_SECRET/$AWS_SECRET/g" conf/s3credentials
 
 
