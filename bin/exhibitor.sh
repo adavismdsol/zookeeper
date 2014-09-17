@@ -1,12 +1,5 @@
 #!/bin/sh
 
-
-
-#Start exhibitor
-java -jar /mnt/current/bin/exhibitor-1.0-jar-with-dependencies.jar --s3credentials /mnt/current/conf/s3credentials --s3config operations-green:zookeeper/zk-exhibitor.conf -c s3 --hostname $HOST
-
-
-
 CONFIG_HOME=/mnt/zookeeper/current/config
 EXHIBITOR_HOME=/mnt/zookeeper/current/bin
 umask 007
@@ -23,7 +16,7 @@ case "$1" in
             OS_HOSTNAME=$(hostname -f)
             fi
         cd /mnt/zookeeper/current/bin
-        exec java -Dlog4j.configuration=file:///${CONFIG_HOME}/log4j.properties -jar ${EXHIBITOR_HOME}/${EXHIBITOR_LIB} --hostname ${OS_HOSTNAME} ${EXHIBITOR_OPTS}
+        exec java -Dlog4j.configuration=file:///${CONFIG_HOME}/log4j.properties -jar ${EXHIBITOR_HOME}/${EXHIBITOR_LIB} --hostname ${OS_HOSTNAME} ${EXHIBITOR_OPTS} > exhibitor.out &
         ;;
   stop)
 	#kill pid 
