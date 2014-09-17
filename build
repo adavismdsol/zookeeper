@@ -3,6 +3,6 @@
 wget http://mirrors.ukfast.co.uk/sites/ftp.apache.org/zookeeper/stable/zookeeper-3.4.6.tar.gz
 tar zxvf zookeeper-3.4.6.tar.gz 
 
-sed -i 's/AWS_KEY/$AWS_KEY/g' conf/s3credentials
-sed -i 's/AWS_SECRET/$AWS_SECRET/g' conf/s3credentials
+sed -i "s/AWS_KEY/$AWS_KEY/g" conf/s3credentials
+sed -i "s/AWS_SECRET/$AWS_SECRET/g" conf/s3credentials
 
