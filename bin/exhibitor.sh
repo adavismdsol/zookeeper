@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONFIG_HOME=/mnt/zookeeper/current/config
+CONFIG_HOME=/mnt/zookeeper/current/conf
 EXHIBITOR_HOME=/mnt/zookeeper/current/bin
 umask 007
 
@@ -22,7 +22,7 @@ case "$1" in
 	#kill pid 
   ;;
 *)
-        log_action_msg "Usage: /etc/init.d/ssh {start|stop|reload|force-reload|restart|try-restart|status}" || true
+        echo "Usage: /etc/init.d/ssh {start|stop|reload|force-reload|restart|try-restart|status}" || true
         exit 1
 esac
 
