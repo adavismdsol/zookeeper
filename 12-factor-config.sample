@@ -1,0 +1,36 @@
+{
+  "id": "zookeeper-sandbox-app",
+  "deploy_env": {
+    "deploy_id": "2014-09-10_10-42-55",
+    "deploy_to": "/mnt/zookeeper",
+    "user": "medi",
+    "source_type": "git",
+    "source_gitpath": "git@github.com:adavismdsol/zookeeper.git",
+    "source_gitref": "develop",
+    "os_packages": [
+      "openjdk-7-jdk"
+    ],
+    "cmd_build": [
+      "gem install bundler",
+      "bundle install --deployment --without development test performance --path $BUNDLE_DIR"
+    ],
+    "cmd_release": [
+      "bundle exec rake config",
+      "./build"
+    ],
+    "processes": {
+      "exhibitor": "java -jar /mnt/zookeeper/current/bin/exhibitor-1.0-jar-with-dependencies.jar --s3credentials /mnt/zookeeper/current/conf/s3credentials --s3config operations-green:zookeeper/zk-exhibitor.conf -c s3"
+    }
+  },
+  "application_env": {
+    "BUNDLE_DIR": "/mnt/app/bundle",
+    "HTTP_PORT": "2000",
+    "DOMAIN": "zookeeper-sandbox.imedidata.net",
+    "ENV": "production",
+    "APP_UUID": "1518de3e-7cf6-472f-8ce5-f92cd97a6b4b",
+    "RAILS_ENV": "production",
+    "SERVICE_NAME": "zookeeper-sandbox",
+    "NEW_RELIC_DEBUG": "false",
+    "ENABLE_NEWRELIC": "false"
+  }
+}
