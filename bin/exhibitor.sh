@@ -1,7 +1,7 @@
 #!/bin/sh
 
-CONFIG_HOME=/mnt/zookeeper/current/conf
-EXHIBITOR_HOME=/mnt/zookeeper/current/bin
+CONFIG_HOME=conf
+EXHIBITOR_HOME=bin
 umask 007
 
 if test -f $CONFIG_HOME/exhibitor.cfg; then
@@ -14,7 +14,7 @@ start() {
         else
             OS_HOSTNAME=$(hostname -f)
             fi
-        cd /mnt/zookeeper/current/bin
+        cd bin
         running=`ps -ef |grep java |grep exh |grep -v grep |tr -s " "|cut -d " " -f2|wc -l`
 
         if [ "$running"  -ge 1 ]
